@@ -48,5 +48,28 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 
+Aktifkan setting baru pada .bash_profile dengan perintah source .bash_profile
+Kemudian dicek dengan perintah echo $HADOOP_HOME yang akan menampilkan /opt/hadoop
+
+3. Lakukan konfigurasi ssh ( key based authentication ) untuk user hadoop
+su hadoop
+ssh-keygen -t rsa
+kemudian enter 2 kali ( tidak menggunakan passphrase )
+
+4. Copy public key ke authorized_keys dengan perintah
+cat ~/.ssh/id_rsa_pub >> ~/.ssh/authorized_keys
+chmod 0600 ~/.ssh/authorized_keys
+Kemudian coba ssh dengan perintah ssh localhost
+
+5. Unduh hadoop-2.7.7.tar.gz
+
+6. Ekstrak dengan perintah
+tar xfz hadoop-2.7.7.tar.gz
+mkdir /opt/hadoop
+mv hadoop-2.7.7/* /opt/hadoop
+chown -R hadoop:hadoop /opt/hadoop/
+
+
+
 
 
