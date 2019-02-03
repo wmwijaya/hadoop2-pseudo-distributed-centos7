@@ -90,6 +90,6 @@ Resource Manager http://localhost:8088
 Namenode http://localhost:50070
 
 
-
+Langkah-langkah meng-compile dan menjalankan program Wordcount
 
 
