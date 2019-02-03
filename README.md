@@ -23,17 +23,29 @@ Kemudian login dengan user tersebut.
 2. Edit file .bash_profile yang ada di home directory user hadoop (/home/hadoop/.bash_profile)
 
 export JAVA_HOME=/opt/jdk1.8.0_201
+
 export JRE_HOME=/opt/jdk1.8.0_201/jre
+
 export PATH=$PATH:/opt/jdk1.8.0_201/bin:/opt/jdk1.8.0_201/jre/bin
+
 export CLASSPATH=.:/opt/jdk1.8.0_201/jre/lib:/opt/jdk1.8.0_201/lib:/opt/jdk1.8.0_201/lib/tools.jar
+
 export HADOOP_CLASSPATH=/opt/jdk1.8.0_201/lib/tools.jar
+
 export HADOOP_HOME=/opt/hadoop
+
 export HADOOP_INSTALL=$HADOOP_HOME
+
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
+
 export HADOOP_COMMON_HOME=$HADOOP_HOME
+
 export HADOOP_HDFS_HOME=$HADOOP_HOME
+
 export YARN_HOME=$HADOOP_HOME
+
 export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
+
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 
 
