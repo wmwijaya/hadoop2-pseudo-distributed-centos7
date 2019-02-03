@@ -91,5 +91,38 @@ Namenode http://localhost:50070
 
 
 Langkah-langkah meng-compile dan menjalankan program Wordcount
+1. Buat direktori /tmp/input/ untuk menyimpan fitel teks yang akan diproses
+hdfs dfs -mkdir /tmp/input
+
+2. Copy file dari direktori lokal ke HDFS
+hdfs dfs -copyFromLocal borobudur-overview.txt /tmp/input/
+hdfs dfs -copyFromLocal borobudur-pengantar.txt /tmp/input/
+Dalam hal ini, file borobudur-overview.txt dan borobudur-pengantar.txt sudah kita siapkan sebelumnya di home direktori ( /home/hadoop/ )
+
+3. File-file yang telah di-copy ke HDFS dilihat dengan menggunakan Hadoop web user interface di http://localhost:50070 menu Utilities > Browse the file system
+
+4. Buat direktori untuk menyimpan output program aplikasi WordCount
+hdfs dfs -mkdir /tmp/wordcount/
+
+5. Pada direktori local user hadoop di (/home/hadoop/) buat direktori wordcount, kemudian buat file WordCount.java didalamnya.
+mkdir wordcount
+cd wordcount
+nano WordCount.java
+copy-paste isi file https://github.com/wmwijaya/develop-hadoop-mapreduce-intellij-windows/blob/master/WordCount.java ke file WordCount.java yang baru dibuat.
+
+6. Compile program WordCount.java dan buat file WordCount.jar, kemudian eksekusi file WordCount.jar tersebut untuk memproses file di direktori HDFS /tmp/input/ dan kemudian hasilnya disimpan di direktori HDFS /tmp/wordcount/output/
+hadoop com.sun.tools.javac.Main wordcount/WordCount.java
+jar cf WordCount.jar wordcount/WordCount*.class
+hadoop jar WordCount.jar wordcount/WordCount /tmp/input/ /tmp/wordcount/output
+
+7. Hasilnya dapat dilihat dengan perintah
+hdfs dfs -ls /tmp/wordcount/output
+hdfs dfs -cat /tmp/wordcount/output/part-r-00000
+atau bisa juga dilihat dengan menggunakan Hadoop web user interface di http://localhost:50070 menu Utilities > Browse the file system
+
+
+Demikian, selamat mencoba!
+
+
 
 
