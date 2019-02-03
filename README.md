@@ -69,6 +69,26 @@ mkdir /opt/hadoop
 mv hadoop-2.7.7/* /opt/hadoop
 chown -R hadoop:hadoop /opt/hadoop/
 
+7. Edit file hadoop-env.sh, core-site.xml, hdfs-site.xml, mapred-site.xml dan yarn-site.xml yang terletak di dalam direktori /opt/hadoop/etc/hadoop/  (catatan: file mapred-site.xml mesti dibuat dengan mengkopi file mapred-site.xml.template )
+
+8. Buat direktori untuk namenode dan datanode
+su root
+mkdir -p /opt/volume/namenode
+mkdir -p /opt/volume/datanode
+chown -R hadoop:hadoop /opt/volume/
+
+9. Format namenode dengan perintah
+hdfs namenode -format
+
+10 Start Hadoop dengan perintah
+start-dfs.sh
+start-yarn.sh
+Kemudian gunakan perintah jps untuk menampilkan proses yang sedang berjalan.
+
+11. Akses web user interface Hadoop di url
+Resource Manager http://localhost:8088
+Namenode http://localhost:50070
+
 
 
 
